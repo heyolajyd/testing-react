@@ -5,24 +5,27 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Paper from '@material-ui/core/Paper';
 
-const DateDisplay = (() => (
-  <Paper className="container">
+const DateDisplay = ({ apiResponse }) => {
+  const [month, day, year] = apiResponse.split('-');
+  return (
+    <Paper className="container">
       <List>
-          <ListItem>
-          <ListItemText>Day: </ListItemText>
-      </ListItem>
-      <ListItem>
-          <ListItemText>Month: </ListItemText>
-      </ListItem>
-      <ListItem>
-          <ListItemText>Year: </ListItemText>
-      </ListItem>
+        <ListItem>
+          <ListItemText>Day: {month}</ListItemText>
+        </ListItem>
+        <ListItem>
+          <ListItemText>Month: {day ? day[1] : day}</ListItemText>
+        </ListItem>
+        <ListItem>
+          <ListItemText>Year: {year}</ListItemText>
+        </ListItem>
       </List>
-  </Paper>
-));
+    </Paper>
+  );
+};
 
 DateDisplay.propTypes = {
   apiResponse: PropTypes.string
-}
+};
 
 export default DateDisplay;
